@@ -5,9 +5,18 @@ from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel, Field, EmailStr 
 from bson import ObjectId  
 from typing import Optional, List 
+from fastapi.middleware.cors import CORSMiddleware
 import motor.motor_asyncio 
 
 app = FastAPI()
+
+app.add_middleware(
+CORSMiddleware,
+allow_origins=["*"],
+allow_credentials=True,
+allow_methods=["*"],
+allow_headers=["*"],
+)
 
 
 MONGODB_URL = 'mongodb+srv://danieldonado:Daniel.300@cluster0.utkzs04.mongodb.net/test'
@@ -31,7 +40,7 @@ class PyObjectId(ObjectId):
         field_schema.update(type="string")
 
 class VehiculosModel(BaseModel):
-   cod_vehiculo: PyObjectId = Field(default_factory=PyObjectId, alias="_id") 
+   id: PyObjectId = Field(default_factory=PyObjectId, alias="_id") 
    marca: str = Field(...)
    modelo: str = Field(...) 
    año: int = Field(..., le=10000)
@@ -64,11 +73,11 @@ class UpdateVehiculosModel(BaseModel):
        json_encoders = {ObjectId: str} 
        schema_extra = { 
            "example": { 
-                "Nombre": "Jane Doe",
-                "email": "jdoe@example.com",
-                "direccion": "Cl 15 # 15 - 00",
-                "pais": "Colombia",
-                "tel": "300 451 2444"
+                "marca": "Chevrolet",
+                "modelo": "NLR",
+                "año": "2018",
+                "tipo": "Carga",
+                "precio": "30.000.000"
            }  
         }       
 
