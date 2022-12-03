@@ -5,9 +5,18 @@ from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel, Field, EmailStr 
 from bson import ObjectId  
 from typing import Optional, List 
+from fastapi.middleware.cors import CORSMiddleware
 import motor.motor_asyncio 
 
 app = FastAPI()
+
+app.add_middleware(
+CORSMiddleware,
+allow_origins=["*"],
+allow_credentials=True,
+allow_methods=["*"],
+allow_headers=["*"],
+)
 
 
 MONGODB_URL = 'mongodb+srv://danieldonado:Daniel.300@cluster0.utkzs04.mongodb.net/test'
