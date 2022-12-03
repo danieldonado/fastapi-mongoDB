@@ -18,9 +18,6 @@ allow_methods=["*"],
 allow_headers=["*"],
 )
 
-
-
-
 MONGODB_URL = 'mongodb+srv://danieldonado:Daniel.300@cluster0.utkzs04.mongodb.net/test'
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URL)
 db = client.misiontic
@@ -55,7 +52,7 @@ class UsuariosModel(BaseModel):
        json_encoders = {ObjectId: str} 
        schema_extra = { 
            "example": { 
-                "Nombre": "Jane Doe",
+                "nombre": "Jane Doe",
                 "email": "jdoe@example.com",
                 "direccion": "Cl 15 # 15 - 00",
                 "pais": "Colombia",
@@ -64,7 +61,7 @@ class UsuariosModel(BaseModel):
         } 
 
 class UpdateUsuariosModel(BaseModel): 
-   Nombre: Optional[str]
+   nombre: Optional[str]
    email: Optional[EmailStr] 
    direccion: Optional[str] 
    pais: Optional[str] 
@@ -75,7 +72,7 @@ class UpdateUsuariosModel(BaseModel):
        json_encoders = {ObjectId: str} 
        schema_extra = { 
            "example": { 
-                "Nombre": "Jane Doe",
+                "nombre": "Jane Doe",
                 "email": "jdoe@example.com",
                 "direccion": "Cl 15 # 15 - 00",
                 "pais": "Colombia",

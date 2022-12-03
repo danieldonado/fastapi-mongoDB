@@ -1,0 +1,44 @@
+<html>
+    <head>
+         <link rel="stylesheet"href="index.css">
+                
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+
+         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
+        </head>
+    <body>
+       <div id="app">
+        
+        <div class="container-fluid">
+            <div class="row">  
+              <div class="cols-sm 12">
+              <h1>Pedidos </h1>
+
+         <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Cantidad</th>
+                <th>Descripcion</th> 
+                <th>Metodo_pago</th>
+
+            </tr>
+            </thead>
+            <tbody>
+              <tr v-for="pedidos in info">
+                <td>{{ pedidos._id }}</td>
+                <td>{{ pedidos.cantidad }}</td>
+                <td>{{ pedidos.descripcion }}</td>
+                <td>{{ pedidos.metodo_pago }}</td>
+              </tr>
+            </tbody>
+          </table>
+      
+             
+    <script src="index.js"></script>
+    </body>
+    
+</html>
